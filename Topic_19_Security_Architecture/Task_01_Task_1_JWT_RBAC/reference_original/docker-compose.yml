@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: hld-19-1-app
+    restart: 'no'
+    environment:
+      JWT_SECRET: local-only-demo-secret
+    ports:
+    - 3000:3000

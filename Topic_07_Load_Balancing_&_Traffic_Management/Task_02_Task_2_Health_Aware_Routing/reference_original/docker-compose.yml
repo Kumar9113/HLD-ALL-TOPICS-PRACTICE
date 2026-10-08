@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    command:
+      - node
+      - student_implementation.js
+    environment:
+      TARGETS: http://app1:3001,http://app2:3002
+    ports:
+      - 3000:3000
+    depends_on:
+      - app1
+      - app2
+  app1:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - node
+      - backend_server.js
+    environment:
+      INSTANCE: app1
+      PORT: '3001'
+      READY: 'true'
+  app2:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - node
+      - backend_server.js
+    environment:
+      INSTANCE: app2
+      PORT: '3002'
+      READY: 'true'

@@ -1,0 +1,27 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - orchestrator
+  orchestrator:
+    build: ./backend
+    environment:
+      INSTANCE_NAME: orchestrator
+  flight:
+    image: node:22-alpine
+    command:
+      - node
+      - /app/flight.js
+    volumes:
+      - ./services/flight.js:/app/flight.js:ro
+  payment:
+    image: node:22-alpine
+    command:
+      - node
+      - /app/payment.js
+    volumes:
+      - ./services/payment.js:/app/payment.js:ro

@@ -1,0 +1,8 @@
+{
+  "name": "hld-topic-9-task-1",
+  "private": true,
+  "dependencies": {
+    "amqplib": "^0.10.5"
+  },
+  "type": "module"
+}

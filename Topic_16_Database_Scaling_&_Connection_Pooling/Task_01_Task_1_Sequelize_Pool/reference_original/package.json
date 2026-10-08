@@ -1,0 +1,8 @@
+{
+  "name": "hld-topic-16-task-1",
+  "private": true,
+  "dependencies": {
+    "sequelize": "^6.37.5"
+  },
+  "type": "module"
+}

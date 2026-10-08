@@ -1,0 +1,36 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api1
+      - api2
+      - api3
+  api1:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api1
+    depends_on:
+      - profile
+  api2:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api2
+    depends_on:
+      - profile
+  api3:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api3
+    depends_on:
+      - profile
+  profile:
+    build:
+      context: .
+      dockerfile: profile.Dockerfile

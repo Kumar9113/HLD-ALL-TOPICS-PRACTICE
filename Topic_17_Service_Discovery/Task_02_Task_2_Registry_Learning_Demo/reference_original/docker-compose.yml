@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    container_name: hld-17-2-app
+    restart: 'no'
+    ports:
+    - 4000:4000

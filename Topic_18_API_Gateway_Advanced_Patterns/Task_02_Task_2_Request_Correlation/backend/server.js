@@ -1,0 +1,1 @@
+import express from "express";import crypto from "crypto";const app=express();app.use((q,r,next)=>{const id=q.get("X-Request-ID")||crypto.randomUUID();r.set("X-Request-ID",id);console.log(JSON.stringify({requestId:id,path:q.path}));next();});app.get("/health",(q,r)=>r.json({status:"UP"}));app.listen(3000);

@@ -1,0 +1,53 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api1
+      - api2
+      - api3
+  api1:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api1
+      SHARD0_URL: postgres://app:app@shard0:5432/hld
+      SHARD1_URL: postgres://app:app@shard1:5432/hld
+    depends_on:
+      - shard0
+      - shard1
+  api2:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api2
+      SHARD0_URL: postgres://app:app@shard0:5432/hld
+      SHARD1_URL: postgres://app:app@shard1:5432/hld
+    depends_on:
+      - shard0
+      - shard1
+  api3:
+    build: ./backend
+    environment:
+      PORT: 3000
+      INSTANCE_NAME: api3
+      SHARD0_URL: postgres://app:app@shard0:5432/hld
+      SHARD1_URL: postgres://app:app@shard1:5432/hld
+    depends_on:
+      - shard0
+      - shard1
+  shard0:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: hld
+  shard1:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: hld

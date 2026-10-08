@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    container_name: hld-8-1-app
+    restart: 'no'
+    environment:
+      REDIS_URL: redis://redis:6379
+    ports:
+    - 3000:3000
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test:
+      - CMD
+      - redis-cli
+      - ping
+      interval: 3s
+      timeout: 2s
+      retries: 10

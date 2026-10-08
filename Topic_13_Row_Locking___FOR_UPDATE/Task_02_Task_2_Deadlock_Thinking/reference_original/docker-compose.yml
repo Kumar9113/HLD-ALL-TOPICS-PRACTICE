@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    container_name: hld-13-2-app
+    restart: 'no'
+    ports:
+    - 3000:3000

@@ -1,0 +1,11 @@
+node_modules
+*.sqlite
+*.db
+.git
+.gitignore
+README.md
+IMPLEMENTATION_GUIDE.md
+FLOW.md
+RUNBOOK.md
+EXPERIMENTS.md
+original_solution.js

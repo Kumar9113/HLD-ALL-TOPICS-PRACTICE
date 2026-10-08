@@ -1,0 +1,9 @@
+{
+  "name": "hld-topic-8-task-1",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.2",
+    "ioredis": "^5.4.1"
+  },
+  "type": "module"
+}

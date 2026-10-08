@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    container_name: hld-18-1-app
+    restart: 'no'
+    ports:
+    - 3000:3000

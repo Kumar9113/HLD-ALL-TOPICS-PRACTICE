@@ -1,0 +1,1 @@
+import amqp from "amqplib"; const c=await amqp.connect(process.env.AMQP_URL);const ch=await c.createChannel();await ch.assertQueue("booking-events",{durable:true});ch.consume("booking-events",msg=>{if(!msg)return;console.log("WORKER RECEIVED",msg.content.toString());ch.ack(msg);});console.log("worker waiting");

@@ -1,0 +1,24 @@
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - flight
+      - booking
+  flight:
+    build:
+      context: ./services
+      dockerfile: Dockerfile
+    command:
+      - node
+      - flight.js
+  booking:
+    build:
+      context: ./services
+      dockerfile: Dockerfile
+    command:
+      - node
+      - booking.js

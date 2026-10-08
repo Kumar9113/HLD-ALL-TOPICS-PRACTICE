@@ -1,0 +1,26 @@
+# Concept Coverage
+
+- Topic 01: Scalability, health checks, requirements, bottlenecks
+- Topic 02: HTTP, DNS, TCP, TLS, request path
+- Topic 03: REST, pagination, idempotent APIs
+- Topic 04: Data modeling, Sequelize, constraints, transactions
+- Topic 05: Capacity estimation, RPS, storage, load testing
+- Topic 06: UUID, Base62, Snowflake IDs
+- Topic 07: Nginx load balancing, round robin, health-aware routing
+- Topic 08: Redis cache-aside, TTL, cache failure
+- Topic 09: RabbitMQ producer, consumer, ACK, async processing
+- Topic 10: ACID booking transaction, external-call boundary
+- Topic 11: PostgreSQL isolation levels, Sequelize isolation
+- Topic 12: Race conditions, atomic conditional updates
+- Topic 13: FOR UPDATE, row locks, deadlock ordering
+- Topic 14: Idempotency persistence, idempotent consumers
+- Topic 15: Saga state machine, orchestration, compensation
+- Topic 16: DB pool sizing, connection limits, horizontal replicas
+- Topic 17: Docker DNS, service discovery, registry
+- Topic 18: Gateway path routing, correlation IDs
+- Topic 19: JWT, RBAC, bcrypt/password security
+- Topic 20: Prometheus metrics, structured logging
+- Topic 21: RPO/RTO, backup and restore drill
+- Topic 22: PostgreSQL partitioning, hash sharding, shard routing
+- Topic 23: Transactional outbox, publisher worker, duplicate window
+- Topic 24: Exponential backoff, retry limits, DLQ, idempotent consumer

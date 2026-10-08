@@ -1,0 +1,1 @@
+import express from "express";import pg from "pg";const app=express();const pool=new pg.Pool({connectionString:process.env.DATABASE_URL,max:Number(process.env.DB_POOL_MAX||5)});app.get("/pool",(q,r)=>r.json({max:pool.options.max,concept:"connections per backend instance"}));app.listen(3000);

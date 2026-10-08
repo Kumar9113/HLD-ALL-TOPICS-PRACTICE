@@ -1,0 +1,9 @@
+{
+  "name": "hld-topic-4-task-2",
+  "private": true,
+  "dependencies": {
+    "sequelize": "^6.37.5",
+    "sqlite3": "^5.1.7"
+  },
+  "type": "module"
+}

@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      TARGETS: http://app1:3001,http://app2:3002
+  app1:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - node
+      - backend_server.js
+    environment:
+      INSTANCE: app1
+      PORT: '3001'
+    ports:
+      - 3001:3001
+  app2:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - node
+      - backend_server.js
+    environment:
+      INSTANCE: app2
+      PORT: '3002'
+    ports:
+      - 3002:3002

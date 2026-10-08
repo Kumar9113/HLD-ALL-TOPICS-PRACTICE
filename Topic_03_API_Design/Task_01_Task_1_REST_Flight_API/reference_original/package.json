@@ -1,0 +1,8 @@
+{
+  "name": "hld-topic-3-task-1",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "type": "module"
+}

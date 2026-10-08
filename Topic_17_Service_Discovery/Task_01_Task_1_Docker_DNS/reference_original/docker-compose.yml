@@ -1,0 +1,18 @@
+services:
+  booking-client:
+    build: .
+    command:
+      - node
+      - student_implementation.js
+    environment:
+      FLIGHT_SERVICE: flight-service
+    depends_on:
+      - flight-service
+  flight-service:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command:
+      - node
+      - flight_service.js

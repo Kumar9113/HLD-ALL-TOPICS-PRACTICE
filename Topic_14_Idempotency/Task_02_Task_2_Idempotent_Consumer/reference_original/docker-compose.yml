@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    container_name: hld-14-2-app
+    restart: 'no'
+    environment:
+      RABBITMQ_URL: amqp://rabbitmq
+    ports:
+    - 3000:3000
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+    - 5672:5672
+    - 15672:15672
+    healthcheck:
+      test:
+      - CMD
+      - rabbitmq-diagnostics
+      - -q
+      - ping
+      interval: 5s
+      timeout: 3s
+      retries: 20
